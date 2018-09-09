@@ -1,0 +1,37 @@
+{
+	"name" : "lsys/oauthclient",
+	"type" : "library",
+	"license": "Apache-2.0",
+	"version" : "1.0.0",
+	"description" : "lsys module oauthclient",
+	"autoload" : {
+		"psr-4" : {
+			"LSYS\\" : "src/classes/LSYS/"
+		},
+		"files" : [
+			"src/Bootstarp.php"
+		]
+	},
+	"require" : {
+		"php" : ">=5.5",
+		"lsys/session" : "~1.0.0",
+		"lsys/config" : "~1.0.0"
+	},
+	"require-dev" : {
+		"lsys/oauthclient-baidu":"~1.0.0",
+     	"lsys/oauthclient-douban":"~1.0.0",
+     	"lsys/oauthclient-qq":"~1.0.0",
+     	"lsys/oauthclient-taobao":"~1.0.0",
+     	"lsys/oauthclient-wechat":"~1.0.0"
+	},
+	"suggest": {
+		"lsys/oauthclient-storage-memcache":"~1.0.0",
+     	"lsys/oauthclient-storage-memcached":"~1.0.0",
+     	"lsys/oauthclient-baidu":"~1.0.0",
+     	"lsys/oauthclient-douban":"~1.0.0",
+     	"lsys/oauthclient-qq":"~1.0.0",
+     	"lsys/oauthclient-taobao":"~1.0.0",
+     	"lsys/oauthclient-wechat":"~1.0.0",
+     	"lsys/oauthclient-storage-redis":"~1.0.0"
+    }
+}
