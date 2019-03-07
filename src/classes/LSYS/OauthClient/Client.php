@@ -19,7 +19,7 @@ abstract class Client implements \Serializable{
 	 * 获取配置对象
 	 * @return \LSYS\Config
 	 */
-	public function get_config(){
+	public function getConfig(){
 		return $this->_config;
 	}
 	/**
@@ -58,14 +58,14 @@ abstract class Client implements \Serializable{
 	 * 得到授权KEY
 	 * @return string
 	 */
-	public function get_access_token(){
+	public function getAccessToken(){
 		return $this->_access_token;
 	}
 	/**
 	 * 刷新授权
 	 * @return Client
 	 */
-	abstract public function refresh_token();
+	abstract public function refreshToken();
 	/**
 	 * 统一调用接口
 	 * @param string $api
@@ -77,5 +77,5 @@ abstract class Client implements \Serializable{
 	 * 获取当前登录的用户信息
 	 * @return array
 	 */
-	abstract public function get_user();
+	abstract public function getUser();
 }

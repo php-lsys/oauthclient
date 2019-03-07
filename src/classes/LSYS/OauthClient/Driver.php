@@ -16,7 +16,7 @@ abstract class Driver {
 	 * set state apatar
 	 * @param State $state
 	 */
-	public static function set_state(State $state){
+	public static function setState(State $state){
 		self::$state=$state;
 	}
 	protected static function _state(){
@@ -32,11 +32,11 @@ abstract class Driver {
 	public function __construct(\LSYS\Config $config){
 		$this->_config=$config;
 	}
-	protected function _state_get(){
+	protected function _stateGet(){
 		$key='_OAUTH_STATE_'.$this->_config->name();
 		return self::_state()->create($key);
 	}
-	protected function _state_check($state){
+	protected function _stateCheck($state){
 		$key='_OAUTH_STATE_'.$this->_config->name();
 		return self::_state()->check($key,$state);
 	}
@@ -49,11 +49,11 @@ abstract class Driver {
 	 * get support env
 	 * @return int
 	 */
-	abstract public function support_terminal();
+	abstract public function supportTerminal();
 	/**
 	 * get access token
 	 * @param string $redirect_uri
 	 * @return Client
 	 */
-	abstract public function get_client($redirect_uri);
+	abstract public function getClient($redirect_uri);
 }

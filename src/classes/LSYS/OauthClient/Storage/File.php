@@ -21,7 +21,7 @@ class File implements Storage{
     public function set($id,Client $client){
         $timeout=$client->expires();
         if ($timeout<=0)return true;
-        $name=substr(strrchr($client->get_config()->name(), '\\'), 1);
+        $name=substr(strrchr($client->getConfig()->name(), '\\'), 1);
         $filename=$this->_dir.$this->_prefix.md5($name.':'.$id);
         $client=serialize($client);
         $timeout=time()+$timeout;

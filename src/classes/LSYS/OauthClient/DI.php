@@ -7,7 +7,7 @@
  */
 namespace LSYS\OauthClient;
 /**
- * @method \LSYS\OauthClient oauth_client()
+ * @method \LSYS\OauthClient oauthClient()
  */
 class DI extends \LSYS\DI{
     /**
@@ -15,7 +15,7 @@ class DI extends \LSYS\DI{
      */
     public static function get(){
         $di=parent::get();
-        !isset($di->oauth_client)&&$di->oauth_client(new \LSYS\DI\SingletonCallback(function (){
+        !isset($di->oauthClient)&&$di->oauthClient(new \LSYS\DI\SingletonCallback(function (){
             return new \LSYS\OauthClient();
         }));
         return $di;

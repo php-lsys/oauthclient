@@ -17,7 +17,7 @@ class Exception extends \LSYS\Exception{
 	 * 是否是需要登录接口而当前没有登录
 	 * @return bool
 	 */
-	public function need_login(){
+	public function needLogin(){
 		return $this->_login;
 	}
 }

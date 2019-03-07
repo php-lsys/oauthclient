@@ -12,4 +12,4 @@ if (!$client){
 	die('not access');
 }
 
-print_r($client->get_user());
+print_r($client->getUser());

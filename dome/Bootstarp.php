@@ -9,6 +9,6 @@ File::dirs(array(
 	__DIR__."/config",
 ));
 $oauth=new OauthClient();
-$oauth->add_driver("qq", new QQ(\LSYS\Config\DI::get()->config("oauthclient.qq")));
-$oauth->add_driver("baidu", new Baidu(\LSYS\Config\DI::get()->config("oauthclient.baidu")));
-$oauth->add_driver("wechat", new Wechat(\LSYS\Config\DI::get()->config("wechat_mp.dome")));
+$oauth->addDriver("qq", new QQ(\LSYS\Config\DI::get()->config("oauthclient.qq")));
+$oauth->addDriver("baidu", new Baidu(\LSYS\Config\DI::get()->config("oauthclient.baidu")));
+$oauth->addDriver("wechat", new Wechat(\LSYS\Config\DI::get()->config("wechat_mp.dome")));
