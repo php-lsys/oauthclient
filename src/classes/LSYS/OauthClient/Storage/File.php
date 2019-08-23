@@ -15,7 +15,7 @@ class File implements Storage{
     protected $_dir;
     public function __construct($dir=null){
         if (!is_dir($dir))$dir=sys_get_temp_dir();
-        if (!@is_readable($dir))throw new Exception(__("stroage use dir[:dir] can't be write.",['dir'=>$dir]));
+        if (!@is_readable($dir))throw new Exception(__("stroage use dir[:dir] can't be write.",[':dir'=>$dir]));
         $this->_dir=rtrim($dir,"\\/").DIRECTORY_SEPARATOR;
     }
     public function set($id,Client $client){
