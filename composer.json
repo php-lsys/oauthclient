@@ -29,7 +29,6 @@
 		]
 	},
 	"require" : {
-		"php" : ">=5.5",
 		"lsys/session" : "~2.1.0",
 		"lsys/config" : "~2.1.0"
 	},
