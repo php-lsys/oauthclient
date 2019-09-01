@@ -2,14 +2,30 @@
 	"name" : "lsys/oauthclient",
 	"type" : "library",
 	"license": "Apache-2.0",
-
 	"description" : "lsys module oauthclient",
 	"autoload" : {
 		"psr-4" : {
-			"LSYS\\" : "src/classes/LSYS/"
+			"LSYS\\" : [
+				"src/common/classes/LSYS/",
+				"src/driver-baidu/classes/LSYS/",
+				"src/driver-douban/classes/LSYS/",
+				"src/driver-qq/classes/LSYS/",
+				"src/driver-taobao/classes/LSYS/",
+				"src/driver-wechat/classes/LSYS/",
+				"src/driver-weibo/classes/LSYS/",
+				"src/storage-db/classes/LSYS/",
+				"src/storage-memcache/classes/LSYS/",
+				"src/storage-memcached/classes/LSYS/",
+				"src/storage-redis/classes/LSYS/"
+			]
 		},
 		"files" : [
-			"src/Bootstarp.php"
+			"src/common/Bootstarp.php",
+			"src/driver-baidu/Bootstarp.php",
+			"src/driver-douban/Bootstarp.php",
+			"src/driver-qq/Bootstarp.php",
+			"src/driver-taobao/Bootstarp.php",
+			"src/driver-wechat/Bootstarp.php"
 		]
 	},
 	"require" : {
@@ -17,21 +33,9 @@
 		"lsys/session" : "~2.1.0",
 		"lsys/config" : "~2.1.0"
 	},
-	"require-dev" : {
-		"lsys/oauthclient-baidu":"~2.1.0",
-     	"lsys/oauthclient-douban":"~2.1.0",
-     	"lsys/oauthclient-qq":"~2.1.0",
-     	"lsys/oauthclient-taobao":"~2.1.0",
-     	"lsys/oauthclient-wechat":"~2.1.0"
-	},
 	"suggest": {
-		"lsys/oauthclient-storage-memcache":"~2.1.0",
-     	"lsys/oauthclient-storage-memcached":"~2.1.0",
-     	"lsys/oauthclient-baidu":"~2.1.0",
-     	"lsys/oauthclient-douban":"~2.1.0",
-     	"lsys/oauthclient-qq":"~2.1.0",
-     	"lsys/oauthclient-taobao":"~2.1.0",
-     	"lsys/oauthclient-wechat":"~2.1.0",
-     	"lsys/oauthclient-storage-redis":"~2.1.0"
+		"lsys/redis" : "~2.1.0",
+		"lsys/memcache" : "~2.1.0",
+		"lsys/memcached" : "~2.1.0"
     }
 }
