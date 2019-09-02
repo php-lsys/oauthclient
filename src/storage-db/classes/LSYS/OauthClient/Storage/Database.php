@@ -35,7 +35,7 @@ class Database implements Storage{
 			$sql="INSERT INTO {$table} (config_name,client_id,client_data,timeout)
 			VALUES({$_config_key},{$_client_id},{$_client_data},{$_timeout})";
 		}
-		return $this->_db->query(Database::DML, $sql);
+		return $this->_db->exec($sql);
 	}
 	public function find($name,$id){
 		$table=$this->_db->quoteTable('oauth_tokens');
@@ -47,7 +47,7 @@ class Database implements Storage{
 		if($row->get("timeout")<time()){
 			$id=$row->get("id");
 			$sql="DELETE FROM  {$table} WHERE id={$id}";
-			$this->_db->query(Database::DML, $sql);
+			$this->_db->exec($sql);
 			return NULL;
 		}
 		$data=$row->get("client_data");
@@ -55,7 +55,7 @@ class Database implements Storage{
 		if((!$data instanceof Client)||$data->expires()<=0){
 			$id=$row->get("id");
 			$sql="DELETE FROM  {$table} WHERE id={$id}";
-			$this->_db->query(Database::DML, $sql);
+			$this->_db->exec($sql);
 			return null;
 		}
 		return $data;
