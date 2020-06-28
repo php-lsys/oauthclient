@@ -8,13 +8,13 @@
 namespace LSYS\OauthClient;
 class Redirect {
 	protected $_url;
-	public function __construct($url){
+	public function __construct(string $url){
 		$this->_url=$url;
 	}
 	public function __toString(){
 		return $this->_url;
 	}
-	public function go($code=301){
+	public function go(int $code=301){
 		$uri=str_replace(array("\n","\t","\r"), '',$this->_url);
 		if (!headers_sent()){
 			Header( "HTTP/1.1 {$code} Moved Permanently" );

@@ -8,7 +8,7 @@
 namespace LSYS\OauthClient;
 class Exception extends \LSYS\Exception{
 	protected $_login;
-	public function __construct($message, $need_login=false,$code=0)
+	public function __construct(string $message, bool $need_login=false,$code=0)
 	{
 		parent::__construct($message, (int) $code);
 		$this->_login=$need_login;
@@ -17,7 +17,7 @@ class Exception extends \LSYS\Exception{
 	 * 是否是需要登录接口而当前没有登录
 	 * @return bool
 	 */
-	public function needLogin(){
+	public function needLogin():bool{
 		return $this->_login;
 	}
 }

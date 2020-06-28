@@ -20,7 +20,7 @@ class QQ extends \LSYS\OauthClient\Client {
 	 * get user info
 	 * @return array
 	 */
-	public function getUser(){
+	public function getUser():array{
 		$appid=$this->_config->get("appid");
 		$scope=$this->_config->get("scope","super_msg");
 		$qq_access_token=$this->_access_token['access_token'];

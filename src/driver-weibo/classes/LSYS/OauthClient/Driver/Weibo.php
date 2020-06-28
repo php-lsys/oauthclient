@@ -4,7 +4,7 @@ use LSYS\OauthClient\Redirect;
 use LSYS\OauthClient\Exception;
 use LSYS\OauthClient;
 class Weibo extends \LSYS\OauthClient\Driver {
-	public function supportTerminal(){
+	public function supportTerminal():int{
 		return OauthClient::TERMINAL_PC|OauthClient::TERMINAL_WAP|OauthClient::TERMINAL_WECHAT;
 	}
 	/**
@@ -20,12 +20,12 @@ class Weibo extends \LSYS\OauthClient\Driver {
 		}
 		return $client;
 	}
-	public function authorize($redirect_uri){
+	public function authorize(string $redirect_uri){
 		$client=$this->_client();
 		$url = $client->getAuthorizeURL($redirect_uri,'code',$this->_stateGet());
 		return new Redirect($url);
 	}
-	public function getClient($redirect_uri){
+	public function getClient(string $redirect_uri){
 		if(!isset($_REQUEST['code']) ||!isset($_REQUEST['state'])){
 			throw new Exception(__("not access,bad request"),true);
 		}

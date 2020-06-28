@@ -37,7 +37,7 @@ class Weibo extends \LSYS\OauthClient\Client {
 	 * get user info
 	 * @return array
 	 */
-	public function getUser(){
+	public function getUser():array{
 		$api=$this->_client();
 		$uid_get = $api->get_uid();
 		if (!isset($uid_get['uid'])){
@@ -45,7 +45,7 @@ class Weibo extends \LSYS\OauthClient\Client {
 		}
 		$user_message = $api->show_user_by_id($uid_get['uid']);//根据ID获取用户等基本信息
 		if (!isset($user_message['idstr'])) throw new Exception("error:".json_encode($user_message)); 
-		return $user_message;
+		return (array)$user_message;
 // 		 'screen_name');//显示名
 // 		'name');
 // 		 'idstr');

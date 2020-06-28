@@ -6,7 +6,7 @@
  * @license    http://www.apache.org/licenses/LICENSE-2.0
  */
 namespace LSYS\OauthClient{
-	function __baidu($string, array $values = NULL, $domain = "default")
+    function __baidu(?string $string, array $values = NULL,string  $domain = "default"):?string 
 	{
 		$i18n=\LSYS\I18n\DI::get()->i18n(__DIR__."/I18n/");
 		return $i18n->__($string,  $values , $domain );

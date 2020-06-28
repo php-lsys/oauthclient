@@ -6,13 +6,13 @@ use function LSYS\OauthClient\__douban as __;
 use LSYS\OauthClient;
 
 class Douban extends \LSYS\OauthClient\Driver {
-	public function supportTerminal(){
+	public function supportTerminal():int{
 		return OauthClient::TERMINAL_PC|OauthClient::TERMINAL_WAP|OauthClient::TERMINAL_WECHAT;
 	}
 	/**
 	 * @return \DoubanOauth
 	 */
-	protected function _client($redirect_uri){
+	protected function _client(string $redirect_uri){
 		static $client;
 		if (!$client){
 			include_once __DIR__.'/../../../../libs/douban/src/DoubanOauth.php';
@@ -31,11 +31,11 @@ class Douban extends \LSYS\OauthClient\Driver {
 		return $client;
 	}
 	
-	public function authorize($redirect_uri){
+	public function authorize(string $redirect_uri){
 		$douban = $this->_client($redirect_uri);
 		return new Redirect($douban->getAuthorizeUrl());
 	}
-	public function getClient($redirect_uri){
+	public function getClient(string $redirect_uri){
 		if (!isset($_REQUEST['code'])){
 			throw new Exception(__("your not access visit"),true);
 		}

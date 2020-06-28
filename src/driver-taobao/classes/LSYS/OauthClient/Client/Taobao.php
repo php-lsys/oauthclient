@@ -39,7 +39,7 @@ class Taobao extends \LSYS\OauthClient\Client {
 	 * get user info
 	 * @return array
 	 */
-	public function getUser(){
+	public function getUser():array{
 		$c=$this->_client();
 		$req = new \UserBuyerGetRequest;
 		$req->setFields("sex,type,status,alipay_bind,avatar");

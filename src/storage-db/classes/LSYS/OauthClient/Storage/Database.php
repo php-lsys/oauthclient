@@ -18,7 +18,7 @@ class Database implements Storage{
 		//table see :table.sql
 	    $this->_db=$database?$database:\LSYS\Database\DI::get()->db();
 	}
-	public function set($id,Client $client){
+	public function set(string $id,Client $client):bool{
 		$timeout=$client->expires();
 		if ($timeout<=0)return true;
 		$name=substr(strrchr($client->getConfig()->name(), '\\'), 1);
@@ -37,7 +37,7 @@ class Database implements Storage{
 		}
 		return $this->_db->exec($sql);
 	}
-	public function find($name,$id){
+	public function find(string $name,string $id){
 		$table=$this->_db->quoteTable('oauth_tokens');
 		$_config_key=$this->_db->quote($name);
 		$_client_id=$this->_db->quote($id);

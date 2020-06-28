@@ -47,13 +47,13 @@ class Wechat extends \LSYS\OauthClient\Client {
 	 * get user info
 	 * @return array
 	 */
-	public function getUser(){
+	public function getUser():array{
 	    $sns=$this->_sns;
 		$user_info=$sns->getUser();
 		if (!$user_info->getStatus()){
 			throw new Exception($user_info->getMsg());
 		}
-		return $user_info->getData();
+		return (array)$user_info->getData();
 // 		$r_user['openid'];
 // 		$r_user['nickname'],
 // 		$r_user['headimgurl'],

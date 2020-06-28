@@ -50,8 +50,8 @@ class Douban extends \LSYS\OauthClient\Client {
 	 * get user info
 	 * @return array
 	 */
-	public function getUser(){
-		return $this->call('User.me.GET');
+	public function getUser():array{
+		return (array)$this->call('User.me.GET');
 // 		'name');//显示名
 // 		'id');
 // 		'avatar');

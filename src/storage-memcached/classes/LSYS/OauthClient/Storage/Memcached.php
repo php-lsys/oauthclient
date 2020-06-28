@@ -15,7 +15,7 @@ class Memcached implements Storage{
 	public function __construct(\LSYS\Memcached $memcache=null){
 	    $this->_mem=$memcache?$memcache:\LSYS\Memcached\DI::get()->memcached();
 	}
-	public function set($id,Client $client){
+	public function set(string $id,Client $client):bool{
 	    $this->_mem->configServers();
 		$lifetime=$client->expires();
 		if ($lifetime<=0)return true;
@@ -35,7 +35,7 @@ class Memcached implements Storage{
 		}
 		return $this->_mem->set($key,serialize($client),$lifetime);
 	}
-	public function find($name,$id){
+	public function find(string $name,string $id){
 	    $this->_mem->configServers();
 		$key=self::$prefix.$name.':'.$id;
 		$data=$this->_mem->get($key);

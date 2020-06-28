@@ -12,10 +12,11 @@ interface Storage{
 	 * @param string $id key
 	 * @param Client $client
 	 */
-	public function set($id,Client $client);
+	public function set(string $id,Client $client):bool;
 	/**
 	 * @param string $name config key
 	 * @param string $id key
+	 * @return mixed
 	 */
-	public function find($name,$id);
+	public function find(string $name,string $id);
 }

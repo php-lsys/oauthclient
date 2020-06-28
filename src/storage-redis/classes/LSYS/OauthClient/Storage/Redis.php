@@ -14,7 +14,7 @@ class Redis implements Storage{
 	public function __construct(\LSYS\Redis $redis=null){
 	    $this->_redis=$redis?$redis:\LSYS\Redis\DI::get()->redis();
 	}
-	public function set($id,Client $client){
+	public function set(string $id,Client $client):bool{
 	    $this->_redis->configConnect();
 		$timeout=$client->expires();
 		if ($timeout<=0)return true;
@@ -26,7 +26,7 @@ class Redis implements Storage{
 		}
 		return $stat;
 	}
-	public function find($name,$id){
+	public function find(string $name,string $id){
 		//QQ config id
 		//config
 	    $this->_redis->configConnect();

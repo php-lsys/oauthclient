@@ -10,7 +10,7 @@ abstract class Client implements \Serializable{
 	protected $_config;
 	protected $_access_token;
 	protected $_expires_in;
-	public function __construct($access_token,\LSYS\Config $config,$expires_in=3600){
+	public function __construct($access_token,\LSYS\Config $config,int $expires_in=3600){
 		$this->_config=$config;
 		$this->_access_token=$access_token;
 		$this->_expires_in=time()+$expires_in;
@@ -26,7 +26,7 @@ abstract class Client implements \Serializable{
 	 * 剩余时间[秒]
 	 * @return number
 	 */
-	public function expires(){
+	public function expires():int{
 		$expires_in=$this->_expires_in-time();
 		return $expires_in>0?$expires_in:0;
 	}
@@ -56,7 +56,7 @@ abstract class Client implements \Serializable{
 	}
 	/**
 	 * 得到授权KEY
-	 * @return string
+	 * @return string|mixed
 	 */
 	public function getAccessToken(){
 		return $this->_access_token;
@@ -77,5 +77,5 @@ abstract class Client implements \Serializable{
 	 * 获取当前登录的用户信息
 	 * @return array
 	 */
-	abstract public function getUser();
+	abstract public function getUser():array;
 }

@@ -24,10 +24,10 @@ class Baidu extends \LSYS\OauthClient\Client {
 	public function call($api,array $param=array()){
 		throw new Exception(__("not support this method"));
 	}
-	public function getUserAvatar($portrait){
+	public function getUserAvatar($data):string{
 		return "http://tb.himg.baidu.com/sys/portrait/item/".$data['portrait'];
 	}
-	public function getUser(){
+	public function getUser():array{
 		$data=$this->_client()->getUserid($this->_access_token['access_token']);
 		$data=@json_decode($data,true);
 		if(isset($data['error_code'])){

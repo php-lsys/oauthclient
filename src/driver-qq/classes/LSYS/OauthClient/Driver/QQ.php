@@ -5,10 +5,10 @@ use function LSYS\OauthClient\__qq as __;
 use LSYS\OauthClient\Redirect;
 use LSYS\OauthClient;
 class QQ extends \LSYS\OauthClient\Driver {
-	public function supportTerminal(){
+	public function supportTerminal():int{
 		return OauthClient::TERMINAL_PC|OauthClient::TERMINAL_WAP|OauthClient::TERMINAL_WECHAT;
 	}
-	public function authorize($redirect_uri){
+	public function authorize(string $redirect_uri){
 		$state=$this->_stateGet();
 		$appid=$this->_config->get("appid");
 		$scope=$this->_config->get("scope","get_user_info");
@@ -18,7 +18,7 @@ class QQ extends \LSYS\OauthClient\Driver {
 				. "&scope=".$scope;
 		return new Redirect($login_url);
 	}
-	public function getClient($redirect_uri){
+	public function getClient(string  $redirect_uri){
 		if(!isset($_REQUEST['code']) ||!isset($_REQUEST['state'])){
 			throw new Exception(__("not access,bad request"),true);
 		}

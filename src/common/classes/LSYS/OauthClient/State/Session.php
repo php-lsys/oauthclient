@@ -13,15 +13,15 @@ class Session implements State,\LSYS\Wechat\Sns\State{
 	public function __construct(\LSYS\Session $session=null){
 		$this->_session=$session?$session:\LSYS\Session\DI::get()->session();
 	}
-	public function create($key){
+	public function create(string $key):string{
 	    $rand=$this->_session->get($key);
 	    if (empty($rand)){
 	        $rand=uniqid();
 	        $this->_session->set($key, $rand);
 	    }
-	    return $rand;
+	    return strval($rand);
 	}
-	public function check($key,$state){
+	public function check(string $key,string $state):bool{
 		$_state=$this->_session->get($key);
 		if (!$_state) return false;
 		$status=$_state==$state;

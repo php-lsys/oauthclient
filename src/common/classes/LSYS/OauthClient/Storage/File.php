@@ -18,7 +18,7 @@ class File implements Storage{
         if (!@is_readable($dir))throw new Exception(__("stroage use dir[:dir] can't be write.",[':dir'=>$dir]));
         $this->_dir=rtrim($dir,"\\/").DIRECTORY_SEPARATOR;
     }
-    public function set($id,Client $client){
+    public function set(string $id,Client $client){
         $timeout=$client->expires();
         if ($timeout<=0)return true;
         $name=substr(strrchr($client->getConfig()->name(), '\\'), 1);
@@ -27,7 +27,7 @@ class File implements Storage{
         $timeout=time()+$timeout;
         return @file_put_contents($filename, $timeout."\n".$client);
     }
-    public function find($name,$id){
+    public function find(string $name,string $id){
         $filename=$this->_dir.$this->_prefix.md5($name.':'.$id);
         if(!is_file($filename))return null;
         $data=file_get_contents($filename);

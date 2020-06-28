@@ -32,11 +32,11 @@ abstract class Driver {
 	public function __construct(\LSYS\Config $config){
 		$this->_config=$config;
 	}
-	protected function _stateGet(){
+	protected function _stateGet():string{
 		$key='_OAUTH_STATE_'.$this->_config->name();
 		return self::_state()->create($key);
 	}
-	protected function _stateCheck($state){
+	protected function _stateCheck(string $state):bool{
 		$key='_OAUTH_STATE_'.$this->_config->name();
 		return self::_state()->check($key,$state);
 	}
@@ -44,16 +44,16 @@ abstract class Driver {
 	 * @param string $callback_url
 	 * @return Redirect
 	 */
-	abstract public function authorize($redirect_uri);
+	abstract public function authorize(string $redirect_uri);
 	/**
 	 * get support env
 	 * @return int
 	 */
-	abstract public function supportTerminal();
+	abstract public function supportTerminal():int;
 	/**
 	 * get access token
 	 * @param string $redirect_uri
 	 * @return Client
 	 */
-	abstract public function getClient($redirect_uri);
+	abstract public function getClient(string $redirect_uri);
 }

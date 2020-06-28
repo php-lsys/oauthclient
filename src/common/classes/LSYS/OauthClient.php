@@ -19,7 +19,7 @@ class OauthClient{
 	 * @param string $callback_url login page url
 	 * @return string
 	 */
-	public static function createRedirectUri($get_key='redirect_uri',$callback_url=TRUE){
+	public static function createRedirectUri(string $get_key='redirect_uri',$callback_url=TRUE):string{
 	    if ($callback_url===true){
 	        $https=false;
 	        if (!empty($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS']) !== 'off') {
@@ -40,7 +40,7 @@ class OauthClient{
 	        $callback_url.=strpos($callback_url, "?")===false?"?":"&";
 	        $callback_url=$callback_url.$get_key."=".$ref;
 	    }
-	    return $callback_url;
+	    return strval($callback_url);
 	}
 	/**
 	 * @var Driver[]
@@ -51,7 +51,7 @@ class OauthClient{
 	 * @param int $terminal
 	 * @return Driver[]
 	 */
-	public function listDriver($terminal){
+	public function listDriver(int $terminal):array{
 	    $out=[];
 	    foreach ($this->_driver as $k=>$dr){
 	        if ($dr->supportTerminal()&$terminal)  $out[$k]=$dr;
@@ -62,9 +62,9 @@ class OauthClient{
 	 * add driver
 	 * @param string $name
 	 * @throws Exception
-	 * @return 
+	 * @return $this
 	 */
-	public function addDriver($key,\LSYS\OauthClient\Driver $driver){
+	public function addDriver(string $key,\LSYS\OauthClient\Driver $driver){
         $this->_driver[$key]=$driver;
 	   return $this;
 	}
@@ -74,7 +74,7 @@ class OauthClient{
 	 * @throws Exception
 	 * @return \LSYS\OauthClient\Driver
 	 */
-	public function getDriver($key){
+	public function getDriver(string $key){
 	    if (!isset($this->_driver[$key])){
 	        throw new Exception(__("not _fint your oauth client driver"));
 	    }
