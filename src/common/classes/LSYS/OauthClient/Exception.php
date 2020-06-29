@@ -8,7 +8,7 @@
 namespace LSYS\OauthClient;
 class Exception extends \LSYS\Exception{
 	protected $_login;
-	public function __construct(string $message, bool $need_login=false,$code=0)
+	public function __construct(string $message, bool $need_login=false,$code=null)
 	{
 		parent::__construct($message, (int) $code);
 		$this->_login=$need_login;
