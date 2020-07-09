@@ -29,7 +29,7 @@
 		]
 	},
 	"require" : {
-		"lsys/session" : "dev-master",
+		"lsys/session" : "~0.0.1",
 		"lsys/config" : "~0.0.1"
 	},
 	"suggest": {
