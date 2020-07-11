@@ -12,12 +12,12 @@ interface State{
 	 * @param string $key
 	 * @return string
 	 */
-    public function create(string $key):string;
+    public function create($key);
 	/**
 	 * check state
 	 * @param string $key
 	 * @param string $state
 	 * @return bool
 	 */
-    public function check(string $key,string $state):bool;
+    public function check($key,$state);
 }
